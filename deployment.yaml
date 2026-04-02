@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cicd-demo
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: cicd-demo
+
+  template:
+    metadata:
+      labels:
+        app: cicd-demo
+
+    spec:
+      containers:
+      - name: cicd-demo
+        image: ghcr.io/jobsoumya/cicd-k8s-demo:latest
+        ports:
+        - containerPort: 5000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cicd-demo-service
+
+spec:
+  selector:
+    app: cicd-demo
+
+  ports:
+  - port: 80
+    targetPort: 5000
+
+  type: NodePort
+
