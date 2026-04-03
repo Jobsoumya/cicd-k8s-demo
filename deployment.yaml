@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: cicd-demo
-        image: ghcr.io/jobsoumya/cicd-k8s-demo:latest
+        image: ghcr.io/jobsoumya/cicd-demo:latest
         ports:
         - containerPort: 5000
 
